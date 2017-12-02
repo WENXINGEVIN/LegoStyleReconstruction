@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Spring Boot - POST-GET AJAX Example</title>
     <meta charset="utf-8" />
@@ -10,9 +10,34 @@
 
 <div class="container">
     <h1>Lego Style 3D Reconstruction with R2N2</h1>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" id="btnId">Open Web VR</button>
 
+    <!--Choose a batch of image and preview-->
+    <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="/">
+            <table>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <ul>
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+            </li>
+        </ul>
+    </div>
+
+    <!--Add new batch of images-->
+    <button type="button" class="btn btn-info btn-lg" id="addBtnId">Add new batch of Image</button>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" id="btnId">Enter Web VR</button>
     <!-- Bootstrap Modal -->
     <div class="modal fade" id="modalId" role="dialog">
         <div class="modal-dialog">
