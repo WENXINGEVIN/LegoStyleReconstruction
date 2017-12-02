@@ -39,21 +39,25 @@ $( document ).ready(function() {
         }
     }
 
+    // Get request
+    $("#resizeBtnId").click(function(event){
+        event.preventDefault();
+        ajaxTriggerScript();
+    });
 
-    // select a batch of images
-    function handleFileSelect(evt) {
-        var files = evt.target.files; // FileList object
-
-        // files is a FileList of File objects. List some properties.
-        var output = [];
-        for (var i = 0, f; f = files[i]; i++) {
-            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                f.size, ' bytes, last modified: ',
-                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                '</li>');
-        }
-        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+    // DO GET
+    function ajaxTriggerScript(){
+        $.ajax({
+            type : "GET",
+            url : "api/trigger/imageResizeScript",
+            success: function(result){
+                $("#getResultDiv").html("<strong>Request sent</strong>");
+                console.log("Success: ", result);
+            },
+            error : function(e) {
+                $("#getResultDiv").html("<strong>Error</strong>");
+                console.log("ERROR: ", e);
+            }
+        });
     }
-
-    document.getElementById('files').addEventListener('change', handleFileSelect, false);
 });

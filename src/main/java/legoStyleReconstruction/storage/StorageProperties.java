@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("storage")
 public class StorageProperties {
 
-    private String location = "uploaded-obj";
+    private String location = "ext-resources/upload-dir";
 
     public String getLocation() {
         return location;

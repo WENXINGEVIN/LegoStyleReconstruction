@@ -7,11 +7,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication(scanBasePackages= {"legoStyleReconstruction.controller",
         "legoStyleReconstruction.exception", "legoStyleReconstruction.storage"})
 @EnableConfigurationProperties(StorageProperties.class)
-public class Application {
+public class Application extends WebMvcConfigurerAdapter {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -23,6 +25,14 @@ public class Application {
             storageService.deleteAll();
             storageService.init();
         };
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/ext-resources/**")
+                .addResourceLocations(
+                        "file:ext-resources/")
+                .setCachePeriod(0);
     }
 
 }
