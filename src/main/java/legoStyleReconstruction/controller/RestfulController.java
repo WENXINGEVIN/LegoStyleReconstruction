@@ -46,7 +46,7 @@ public class RestfulController {
         ProcessBuilder builder = new ProcessBuilder();
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss-SSSZ").format(new java.util.Date());
         ProcessBuilderHelper helper = new ProcessBuilderHelper(
-                "source py3/bin/activate && python demo.py ext-resources/obj-dir/"+timeStamp+".obj"+" ext-resources/resized-dir");
+                "py3/bin/python3 demo.py ext-resources/obj-dir/"+timeStamp+".obj"+" ext-resources/resized-dir");
         builder.command(helper.getCMD_ARRAY());
         /* the way to get home dir
            System.getProperty("user.home")
