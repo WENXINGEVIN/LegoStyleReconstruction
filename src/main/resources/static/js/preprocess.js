@@ -42,11 +42,11 @@ $( document ).ready(function() {
     // Get request
     $("#resizeBtnId").click(function(event){
         event.preventDefault();
-        ajaxTriggerScript();
+        ajaxTriggerImageResizeScript();
     });
 
     // DO GET
-    function ajaxTriggerScript(){
+    function ajaxTriggerImageResizeScript(){
         $.ajax({
             type : "GET",
             url : "api/trigger/imageResizeScript",
@@ -56,6 +56,28 @@ $( document ).ready(function() {
             },
             error : function(e) {
                 $("#getResultDiv").html("<strong>Error</strong>");
+                console.log("ERROR: ", e);
+            }
+        });
+    }
+
+    // Get request
+    $("#modelBtnId").click(function(event){
+        event.preventDefault();
+        ajaxTriggerModelScript();
+    });
+
+    // DO GET
+    function ajaxTriggerModelScript(){
+        $.ajax({
+            type : "GET",
+            url : "api/trigger/modelScript",
+            success: function(result){
+                $("#getObjResultDiv").html("<strong>Request sent. Hold on.</strong>");
+                console.log("Success: ", result);
+            },
+            error : function(e) {
+                $("#getObjResultDiv").html("<strong>Error</strong>");
                 console.log("ERROR: ", e);
             }
         });

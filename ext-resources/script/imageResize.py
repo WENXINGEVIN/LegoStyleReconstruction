@@ -8,9 +8,9 @@ def convert_from_dir(directory):
     for i, filename in enumerate(os.listdir(directory)):
         print(filename.lower())
         if filename.lower().endswith('.png') or filename.lower().endswith('.jpg'):
-            if not os.path.exists('ext-resources/obj-dir'):
-                    os.makedirs('ext-resources/obj-dir')
-            outfile = 'ext-resources/obj-dir/%d.jpg' % i
+            if not os.path.exists('ext-resources/resized-dir'):
+                    os.makedirs('ext-resources/resized-dir')
+            outfile = 'ext-resources/resized-dir/%d.jpg' % i
             im = Image.open(directory + '/' + filename)
             im = im.convert('RGB')
             im.thumbnail(size)

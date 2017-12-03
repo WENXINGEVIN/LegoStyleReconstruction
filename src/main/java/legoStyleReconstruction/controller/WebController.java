@@ -36,12 +36,6 @@ public class WebController {
         return "home";
     }
 
-    @ResponseBody
-    @RequestMapping(value="/greeting",method = RequestMethod.GET)
-    public String Greeting(){
-        return "greeting";
-    }
-
     @RequestMapping(value = "/r2n2", method = RequestMethod.GET)
     public String r2n2() {
         return "webvr_vive_dragging";
