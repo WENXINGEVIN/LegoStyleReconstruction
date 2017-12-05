@@ -9,6 +9,7 @@ Our application is a Spring-Boot Web application which means it’s Java based. 
 * Anaconda Python 3.3
 
 
+-------
 * To use this application:
 * Setup GPU instance according to above;
 * Setup Python environment with Anaconda python 3;
