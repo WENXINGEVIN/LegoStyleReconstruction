@@ -9,8 +9,8 @@ cuDNN 7.5
 Anaconda Python 3.3
 
 
-To use this application:
-Setup GPU instance according to above;
+* To use this application:
+* Setup GPU instance according to above;
 Setup Python environment with Anaconda python 3;
 Install PyTorch dependency;
 Install Java 1.8;
